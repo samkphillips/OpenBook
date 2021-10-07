@@ -2,7 +2,7 @@
   <div class="post">
     <h6>Name: {{ post.name }} - Posted on: {{ post.created_at }}</h6>
     <p>{{ post.content }}</p>
-    <h5>{{ post.likes - post.dislikes }} | Likes: {{ post.likes }} | Dislikes: {{ post.dislikes }}</h5>
+    <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }}</h5>
     <div v-if="post.comments">
       <div v-if="displayComments">
         <CommentCard
@@ -10,6 +10,7 @@
           :key="comment.id"
           :comment="comment"
         />
+        <CommentForm />
         <button @click="() => {displayComments = false}">
           Hide Comments
         </button>
@@ -20,16 +21,22 @@
         </button>
       </div>
     </div>
+    <div v-else>
+      <h5>This post has no comments! Be the first to add yours.</h5>
+      <CommentForm />
+    </div>
   </div>
 </template>
 
 <script>
 import CommentCard from '../components/CommentCard.vue'
+import CommentForm from '../components/CommentForm.vue'
 
 export default {
   name: 'PostCard',
   components: {
-    CommentCard
+    CommentCard,
+    CommentForm
   },
   data: () => ({
     displayComments: false
