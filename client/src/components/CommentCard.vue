@@ -2,6 +2,7 @@
   <div class="comment">
     <h6>Name: {{ comment.name }} - posted on: {{ comment.created_at }}</h6>
     <p>{{ comment.content }}</p>
+    <h5>{{ comment.like - comment.dislike }} | Likes: {{ comment.like }} | Dislikes: {{ comment.dislike }}</h5>
   </div>
 </template>
 

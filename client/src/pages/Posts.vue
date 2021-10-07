@@ -2,11 +2,10 @@
   <div>
     <h2>Posts</h2>
     <div>
-      <h5>Post Form</h5>
+      <PostForm />
     </div>
     <div>
       <h5>Display Posts</h5>
-      <!-- <h6 v-for="post in postList" :key="post.id">{{ post.content }}</h6> -->
       <PostCard
         v-for="post in postList"
         :key="post.id"
@@ -20,11 +19,13 @@
 import posts from '../testing/dummyPosts'
 
 import PostCard from '../components/PostCard.vue'
+import PostForm from '../components/PostForm.vue'
 
 export default {
   name: 'Posts',
   components: {
-    PostCard
+    PostCard,
+    PostForm
   },
   data: () => ({
     postList: posts
