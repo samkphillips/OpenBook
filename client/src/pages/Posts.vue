@@ -2,7 +2,7 @@
   <div>
     <h2>Posts</h2>
     <div>
-      <PostForm />
+      <PostForm :postList="postList" />
     </div>
     <div>
       <h5>Display Posts</h5>

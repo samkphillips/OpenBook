@@ -18,15 +18,29 @@
 </template>
 
 <script>
+import { CreatePost } from '../services/posts'
+
 export default {
   name: 'PostForm',
   data: () => ({
     nameField: '',
     contentField: ''
   }),
+  props: {
+    postList: Array
+  },
   methods: {
-    submitPost() {
-      console.log({name: this.nameField, content: this.contentField})
+    async submitPost() {
+      // console.log({name: this.nameField, content: this.contentField})
+      const message = await CreatePost({
+        name: this.nameField,
+        content: this.contentField
+      })
+
+      this.postList.unshift(message)
+
+      this.nameField = ''
+      this.contentField = ''
     },
     handleName(e) {
       this.nameField = e.target.value

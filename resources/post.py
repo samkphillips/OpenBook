@@ -12,7 +12,8 @@ class Posts(Resource):
 
     def post(self):
         data = request.get_json()
-        post = Post(**data)
+        print(data)
+        post = Post(data['content'], data['name'], 0, 0)
         post.create()
         return post.json(), 201
 
