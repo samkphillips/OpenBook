@@ -5,7 +5,7 @@ from models.db import db
 from sqlalchemy.orm import joinedload
 
 
-class Comment(Resource):
+class Comments(Resource):
     def get(self):
         comments = Comment.find_all()
         return comments
@@ -29,8 +29,8 @@ class CommentDetail(Resource):
     def put(self, comment_id):
         data = request.get_json()
         comment = Comment.find_by_id(comment_id)
-        for k in data.keys():
-            comment[k] = data[k]
+        for key in data:
+            setattr(comment, key, data[key])
         db.session.commit()
         return comment.json()
 

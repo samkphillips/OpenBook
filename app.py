@@ -21,6 +21,10 @@ app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 migrate = Migrate(app, db)
 
+api.add_resource(post.Posts, '/posts')
+api.add_resource(post.PostDetail, '/posts/<int:post_id>')
+api.add_resource(comment.Comments, '/comments')
+api.add_resource(comment.CommentDetail, '/comments/<int:comment_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)

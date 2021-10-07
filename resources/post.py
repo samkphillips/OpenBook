@@ -8,7 +8,7 @@ from models.post import Post
 class Posts(Resource):
     def get(self):
         posts = Post.find_all()
-        return [p.json() for p in posts]
+        return posts
 
     def post(self):
         data = request.get_json()
