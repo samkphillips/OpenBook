@@ -12,10 +12,12 @@ class Comments(Resource):
 
     def post(self):
         data = request.get_json()
-        params = {}
-        for k in data.keys():
-            params[k] = data[k]
-        comment = Comment(**params)
+        # params = {}
+        # for k in data.keys():
+        #     params[k] = data[k]
+        # comment = Comment(**params)
+        # Probably fine but maybe not
+        comment = Comment(data['name'], data['content'], 0, 0, data['post_id'])
         comment.create()
         return comment.json(), 201
 
