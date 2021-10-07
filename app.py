@@ -3,6 +3,10 @@ from flask_cors import CORS
 from flask_restful import Api
 from flask_migrate import Migrate
 from models.db import db
+from models.comment import Comment
+from models.post import Post
+from resources import post
+from resources import comment
 
 
 app = Flask(__name__)
@@ -19,4 +23,4 @@ migrate = Migrate(app, db)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
