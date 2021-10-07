@@ -22,7 +22,7 @@ class PostDetail(Resource):
         post = Post.query.options(
             joinedload('comments')).filter_by(id=post_id).first()
         print(post.comments)
-        comments = [a.json() for p in post.comments]
+        comments = [p.json() for p in post.comments]
         return {**post.json(), "comments": comments}
 
     def put(self, post_id):

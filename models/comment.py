@@ -14,7 +14,7 @@ class Comment(db.Model):
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow(
     ), nullable=False, onupdate=datetime.utcnow)
-    post_id = db.Columm(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
     posts = db.relationship('Post', backref=db.backref('posts', lazy=True))
 
