@@ -12,8 +12,8 @@
     </p>
 
     <p>
-      We hope that through this freeform structure, everyone will feel empowered
-      to truly communicate in a way that is free of toxic behavior.
+      We hope through this freeform structure, everyone will feel empowered to
+      truly communicate in a way that is free from toxic behavior.
     </p>
   </div>
 </template>

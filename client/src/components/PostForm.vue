@@ -2,17 +2,18 @@
   <div>
     <h3>Post Form</h3>
     <form @submit.prevent="submitPost">
+      <input placeholder="Your Name" @input="handleName" :value="nameField" />
       <input
-        placeholder="Your Name"
-        @input="handleName"
-        :value="nameField"
-      />
-      <input
-        placeholder="Your Message"
+        placeholder="Your Post"
         @input="handleContent"
         :value="contentField"
       />
-      <button type="submit" :disabled="nameField.length <= 0 || contentField.length <= 0">Submit</button>
+      <button
+        type="submit"
+        :disabled="nameField.length <= 0 || contentField.length <= 0"
+      >
+        Post
+      </button>
     </form>
   </div>
 </template>

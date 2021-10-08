@@ -5,7 +5,7 @@
       <form @submit.prevent="submitComment">
         <input placeholder="Your Name" @input="handleName" :value="nameField" />
         <input
-          placeholder="Your Message"
+          placeholder="Your Comment"
           @input="handleContent"
           :value="contentField"
         />
@@ -13,7 +13,7 @@
           type="submit"
           :disabled="nameField.length <= 0 || contentField.length <= 0"
         >
-          Submit
+          Comment
         </button>
         <button
           @click="

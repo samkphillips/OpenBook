@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <h4>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h4>
+    <h4>{{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h4>
     <p>{{ post.content }}</p>
     <h4 class="likes">
       {{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes:
