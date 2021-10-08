@@ -10,10 +10,17 @@ class Comment(db.Model):
     content = db.Column(db.Text, nullable=False)
     like = db.Column(db.Integer, nullable=False)
     dislike = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False,
-                           default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow(
-    ), nullable=False, onupdate=datetime.utcnow)
+    created_at = db.Column(
+        db.DateTime,
+        nullable=False,
+        default=datetime.utcnow
+    )
+    updated_at = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        nullable=False,
+        onupdate=datetime.utcnow
+    )
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
     posts = db.relationship('Post', backref=db.backref('posts', lazy=True))

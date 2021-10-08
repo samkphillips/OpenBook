@@ -1,9 +1,9 @@
 <template>
   <div class="post">
-    <h6>Name: {{ post.name }} - Posted on: {{ post.created_at }}</h6>
+    <h6>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h6>
     <p>{{ post.content }}</p>
     <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }}</h5>
-    <div v-if="post.comments && post.comments.length > 0">
+    <div v-if="post.comments.length > 0">
       <div v-if="displayComments">
         <CommentCard
           v-for="comment in post.comments"
@@ -45,7 +45,24 @@ export default {
     post: Object
   },
   mounted() {
-    this.displayComments = !this.post.comments
+    this.displayComments = this.post.comments.length === 0
+    this.sortComments()
+  },
+  methods: {
+    sortComments() {
+      this.post.comments.sort((a, b) => {
+        let aDate = new Date(a.created_at)
+        let bDate = new Date(b.created_at)
+
+        if (aDate < bDate) {
+          return -1
+        }
+        if (aDate > bDate) {
+          return 1
+        }
+        return 0
+      })
+    }
   }
 }
 </script>
