@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <h6>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }} <button @click="deletePost">Report</button></h6>
+    <h4>{{ post.name }} - Posted on: {{ new Date(post.created_at) }} <button @click="deletePost">Report</button></h4>
     <p>{{ post.content }}</p>
     
     <LikeBar
@@ -18,12 +18,24 @@
           :commentList="post.comments"
         />
         <CommentForm :post_id="post.id" :commentList="post.comments" />
-        <button @click="() => {displayComments = false}">
+        <button
+          @click="
+            () => {
+              displayComments = false
+            }
+          "
+        >
           Hide Comments
         </button>
       </div>
       <div v-else>
-        <button @click="() => {displayComments = true}">
+        <button
+          @click="
+            () => {
+              displayComments = true
+            }
+          "
+        >
           Display {{ post.comments.length }} Comments
         </button>
       </div>
