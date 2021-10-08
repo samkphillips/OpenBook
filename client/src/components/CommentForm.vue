@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { CreateComment } from '../services/comments'
+
 export default {
   name: 'CommentForm',
   data: () => ({
@@ -31,9 +33,23 @@ export default {
     contentField: '',
     showForm: false
   }),
+  props: {
+    post_id: Number,
+    commentList: Array
+  },
   methods: {
-    submitComment() {
-      console.log({name: this.nameField, content: this.contentField})
+    async submitComment() {
+      const message = await CreateComment({
+        name: this.nameField,
+        content: this.contentField,
+        post_id: this.post_id
+      })
+
+      this.commentList.push(message)
+
+      this.nameField = ''
+      this.contentField = ''
+      this.showForm = false
     },
     handleName(e) {
       this.nameField = e.target.value
