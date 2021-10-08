@@ -102,8 +102,10 @@ export default {
 }
 
 .post {
-  background-color: antiquewhite;
+  background-color: white;
   margin: 10px;
   padding: 10px;
+  border-radius: 10px;
+  border: solid 1px lightgray;
 }
 </style>

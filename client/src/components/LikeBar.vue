@@ -69,7 +69,7 @@ export default {
 .tile {
   width: 30px;
   height: 30px;
-  margin: 0 2px;
+  margin: 0 2px 5px 2px;
   display: flex;
   justify-content: center;
   align-items: center;

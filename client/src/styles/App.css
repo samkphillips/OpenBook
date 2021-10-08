@@ -1,6 +1,7 @@
 h2 {
   color: black;
 }
+
 a {
   text-decoration: none;
   color: darkblue;
@@ -8,16 +9,37 @@ a {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
 }
+
 body {
   background-color: #f8f8ff;
+}
+
+main {
+  padding: 0 50px;
 }
 
 h4 {
   color: blue;
 }
+
 p {
   font-size: 20px;
 }
+
 .likes {
   color: black;
+}
+
+input {
+  margin: 5px 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+button {
+  margin: 10px;
 }
