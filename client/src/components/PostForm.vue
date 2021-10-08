@@ -2,8 +2,14 @@
   <div>
     <h3>Post Form</h3>
     <form @submit.prevent="submitPost">
-      <input placeholder="Your Name" @input="handleName" :value="nameField" />
       <input
+        type="text"
+        placeholder="Your Name"
+        @input="handleName"
+        :value="nameField"
+      />
+      <input
+        type="text"
         placeholder="Your Post"
         @input="handleContent"
         :value="contentField"

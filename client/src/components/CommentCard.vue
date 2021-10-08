@@ -42,8 +42,9 @@ export default {
 }
 
 .comment {
-  background-color: lightblue;
+  background-color: lightgray;
   margin: 10px;
   padding: 10px;
+  border-radius: 10px;
 }
 </style>

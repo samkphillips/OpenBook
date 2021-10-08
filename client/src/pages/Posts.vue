@@ -5,7 +5,6 @@
       <PostForm :postList="postList" />
     </div>
     <div v-if="postList.length > 0">
-      <h5>Display Posts</h5>
       <PostCard
         v-for="post in postList"
         :key="post.id"
