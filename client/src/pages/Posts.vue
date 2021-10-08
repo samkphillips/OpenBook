@@ -10,6 +10,7 @@
         v-for="post in postList"
         :key="post.id"
         :post="post"
+        :postList="postList"
       />
     </div>
     <div v-else><h6>Loading...</h6></div>
