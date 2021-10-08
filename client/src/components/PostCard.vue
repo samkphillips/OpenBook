@@ -1,8 +1,11 @@
 <template>
   <div class="post">
-    <h6>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h6>
+    <h4>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h4>
     <p>{{ post.content }}</p>
-    <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }} <button @click="deletePost">Report</button></h5>
+    <h4 class="likes">
+      {{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes:
+      {{ post.dislike }} <button @click="deletePost">Report</button>
+    </h4>
     <div v-if="post.comments.length > 0">
       <div v-if="displayComments">
         <CommentCard
@@ -12,12 +15,24 @@
           :commentList="post.comments"
         />
         <CommentForm :post_id="post.id" :commentList="post.comments" />
-        <button @click="() => {displayComments = false}">
+        <button
+          @click="
+            () => {
+              displayComments = false
+            }
+          "
+        >
           Hide Comments
         </button>
       </div>
       <div v-else>
-        <button @click="() => {displayComments = true}">
+        <button
+          @click="
+            () => {
+              displayComments = true
+            }
+          "
+        >
           Display {{ post.comments.length }} Comments
         </button>
       </div>
