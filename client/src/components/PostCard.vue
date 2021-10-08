@@ -1,8 +1,14 @@
 <template>
   <div class="post">
-    <h6>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h6>
+    <h6>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }} <button @click="deletePost">Report</button></h6>
     <p>{{ post.content }}</p>
-    <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }} <button @click="deletePost">Report</button></h5>
+    
+    <LikeBar
+      :likes="post.like"
+      :dislikes="post.dislike"
+      :parentType="'post'"
+      :parentId="post.id"
+    />
     <div v-if="post.comments.length > 0">
       <div v-if="displayComments">
         <CommentCard
@@ -32,13 +38,15 @@
 <script>
 import CommentCard from '../components/CommentCard.vue'
 import CommentForm from '../components/CommentForm.vue'
+import LikeBar from '../components/LikeBar.vue'
 import { DeletePost } from '../services/posts'
 
 export default {
   name: 'PostCard',
   components: {
     CommentCard,
-    CommentForm
+    CommentForm,
+    LikeBar
   },
   data: () => ({
     displayComments: false
