@@ -17,7 +17,6 @@
 </template>
 
 <script>
-// import posts from '../testing/dummyPosts'
 import { GetPosts } from '../services/posts'
 
 import PostCard from '../components/PostCard.vue'

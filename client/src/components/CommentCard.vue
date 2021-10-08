@@ -1,8 +1,7 @@
 <template>
   <div class="comment">
-    <h6>{{ comment.name }} - commented on: {{ new Date(comment.created_at) }}</h6>
+    <h6>{{ comment.name }} - commented on: {{ new Date(comment.created_at) }} <button @click="deleteComment">Report</button></h6>
     <p>{{ comment.content }}</p>
-    <h5>{{ comment.like - comment.dislike }} | Likes: {{ comment.like }} | Dislikes: {{ comment.dislike }} <button @click="deleteComment">Report</button></h5>
     <LikeBar
       :likes="comment.like"
       :dislikes="comment.dislike"
