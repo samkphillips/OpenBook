@@ -1,13 +1,13 @@
 <template>
   <div class="options-list">
     <div :class="myLikes - myDislikes >= 0 ? 'tile high' : 'tile low'">
-      <h5>{{ myLikes - myDislikes }}</h5>
+      <h5 class="no-select">{{ myLikes - myDislikes }}</h5>
     </div>
     <div class="tile likes" @click="handleLike">
-      <h3>👍</h3>
+      <h3 class="no-select">👍</h3>
     </div>
     <div class="tile dislikes" @click="handleDislike">
-      <h3>👎</h3>
+      <h3 class="no-select">👎</h3>
     </div>
   </div>
 </template>
@@ -92,5 +92,14 @@ export default {
 
 .dislikes {
   background-color: red;
+}
+
+.likes:hover,
+.dislikes:hover {
+  cursor: pointer;
+}
+
+.no-select {
+  user-select: none;
 }
 </style>
