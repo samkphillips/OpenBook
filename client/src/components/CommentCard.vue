@@ -1,8 +1,12 @@
 <template>
   <div class="comment">
-    <h6>Name: {{ comment.name }} - posted on: {{ new Date(comment.created_at) }}</h6>
+    <h6>{{ comment.name }} - posted on: {{ new Date(comment.created_at) }}</h6>
     <p>{{ comment.content }}</p>
-    <h5>{{ comment.like - comment.dislike }} | Likes: {{ comment.like }} | Dislikes: {{ comment.dislike }} <button @click="deleteComment">Report</button></h5>
+    <h5>
+      {{ comment.like - comment.dislike }} | Likes: {{ comment.like }} |
+      Dislikes: {{ comment.dislike }}
+      <button @click="deleteComment">Report</button>
+    </h5>
   </div>
 </template>
 
