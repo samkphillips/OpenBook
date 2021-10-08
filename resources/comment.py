@@ -37,7 +37,7 @@ class CommentDetail(Resource):
         return comment.json()
 
     def delete(self, comment_id):
-        comment = Comment.find_by_id()
+        comment = Comment.find_by_id(comment_id)
         if not comment:
             return {'msg': 'Comment not found'}, 404
         db.session.delete(comment)

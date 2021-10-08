@@ -2,13 +2,14 @@
   <div class="post">
     <h6>Name: {{ post.name }} - Posted on: {{ new Date(post.created_at) }}</h6>
     <p>{{ post.content }}</p>
-    <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }}</h5>
+    <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }} <button @click="deletePost">Report</button></h5>
     <div v-if="post.comments.length > 0">
       <div v-if="displayComments">
         <CommentCard
           v-for="comment in post.comments"
           :key="comment.id"
           :comment="comment"
+          :commentList="post.comments"
         />
         <CommentForm :post_id="post.id" :commentList="post.comments" />
         <button @click="() => {displayComments = false}">
@@ -31,6 +32,7 @@
 <script>
 import CommentCard from '../components/CommentCard.vue'
 import CommentForm from '../components/CommentForm.vue'
+import { DeletePost } from '../services/posts'
 
 export default {
   name: 'PostCard',
@@ -42,7 +44,8 @@ export default {
     displayComments: false
   }),
   props: {
-    post: Object
+    post: Object,
+    postList: Array
   },
   mounted() {
     this.displayComments = this.post.comments.length === 0
@@ -62,6 +65,11 @@ export default {
         }
         return 0
       })
+    },
+    async deletePost() {
+      await DeletePost(this.post.id)
+      const delIndex = this.postList.indexOf(this.post)
+      this.postList.splice(delIndex, 1)
     }
   }
 }
