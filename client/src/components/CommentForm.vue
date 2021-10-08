@@ -13,7 +13,7 @@
           @input="handleContent"
           :value="contentField"
         />
-        <button type="submit">Submit</button>
+        <button type="submit" :disabled="nameField.length <= 0 || contentField.length <= 0">Submit</button>
         <button @click="() => {showForm = false}">Cancel</button>
       </form>
     </div>

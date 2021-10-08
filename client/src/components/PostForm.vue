@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     async submitPost() {
-      // console.log({name: this.nameField, content: this.contentField})
       const message = await CreatePost({
         name: this.nameField,
         content: this.contentField

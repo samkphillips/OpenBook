@@ -39,6 +39,21 @@ export default {
     async fetchPosts() {
       const messages = await GetPosts()
       this.postList = messages
+      this.sortPosts()
+    },
+    sortPosts() {
+      this.postList.sort((a, b) => {
+        let aDate = new Date(a.created_at)
+        let bDate = new Date(b.created_at)
+
+        if (aDate < bDate) {
+          return 1
+        }
+        if (aDate > bDate) {
+          return -1
+        }
+        return 0
+      })
     }
   }
 }

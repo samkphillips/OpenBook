@@ -3,7 +3,7 @@
     <h6>Name: {{ post.name }} - Posted on: {{ post.created_at }}</h6>
     <p>{{ post.content }}</p>
     <h5>{{ post.like - post.dislike }} | Likes: {{ post.like }} | Dislikes: {{ post.dislike }}</h5>
-    <div v-if="post.comments.length > 0">
+    <div v-if="post.comments && post.comments.length > 0">
       <div v-if="displayComments">
         <CommentCard
           v-for="comment in post.comments"
@@ -43,6 +43,9 @@ export default {
   }),
   props: {
     post: Object
+  },
+  mounted() {
+    this.displayComments = !this.post.comments
   }
 }
 </script>
