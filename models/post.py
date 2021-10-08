@@ -10,10 +10,17 @@ class Post(db.Model):
     name = db.Column(db.String(80), nullable=False)
     like = db.Column(db.Integer, nullable=False)
     dislike = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.DateTime, default=str(
-        datetime.utcnow()), nullable=False)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow(
-    ), nullable=False, onupdate=datetime.now())
+    created_at = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        nullable=False
+    )
+    updated_at = db.Column(
+        db.DateTime,
+        default=datetime.utcnow,
+        nullable=False,
+        onupdate=datetime.utcnow
+    )
 
     comments = db.relationship(
         'Comment', cascade='all', backref=db.backref('comments', lazy=True))

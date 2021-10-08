@@ -36,6 +36,8 @@ export default {
         content: this.contentField
       })
 
+      message.comments = []
+
       this.postList.unshift(message)
 
       this.nameField = ''
