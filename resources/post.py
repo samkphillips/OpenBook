@@ -7,8 +7,16 @@ from models.post import Post
 
 class Posts(Resource):
     def get(self):
-        posts = Post.find_all()
-        return posts
+        data = Post.query.options(joinedload('comments')).all()
+        print("HERE IT IS")
+        print(data)
+        return {"msg": "hello"}
+        results = [u.json() for u in data]
+        # comments = [p.json() for p in data.comments]
+        # return {results, comments}
+
+        # comments = [p.json() for p in posts.comments]
+        # return {**post.json(), "comments": comments}
 
     def post(self):
         data = request.get_json()
